@@ -6,8 +6,6 @@
 * 4. Create a contact for each account inserted.
 */
 trigger AccountTrigger on Account (before insert, after insert) {
-    System.debug('AccountTrigger: ' + Trigger.operationType);
-
     // BEFORE
     if(Trigger.isBefore){
         // INSERT
@@ -44,12 +42,11 @@ trigger AccountTrigger on Account (before insert, after insert) {
             for(Account a : Trigger.new){
                 Contact c = new Contact(
                                         LastName = 'DefaultContact',
-                                        Email = 'default@email.com', 
+                                        Email = 'default@email.com',
                                         AccountId = a.Id);
                 newContacts.add(c);
             }
             insert newContacts;
         }
     }
-
 }

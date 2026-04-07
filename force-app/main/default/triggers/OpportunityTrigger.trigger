@@ -4,8 +4,6 @@
 * 3. Set the primary contact on the opportunity to the contact with the title of CEO.
 */
 trigger OpportunityTrigger on Opportunity (before update, after update, before delete) {
-    System.debug('OpportunityTrigger: ' + Trigger.operationType);
-
     // BEFORE
     if(Trigger.isBefore){
         // UPDATE
